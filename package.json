@@ -1,0 +1,23 @@
+{
+  "name": "traffic-lights",
+  "version": "0.1.0",
+  "description": "Simulate a set of traffic lights at an intersection",
+  "main": "main.js",
+  "scripts": {
+    "compile": "babel ./ -d output",
+    "pretest": "npm run compile",
+    "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json",
+    "prestart": "npm run compile",
+    "start": "node output/main.js"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "author": "treelite <c.xinle@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.22.0",
+    "jasmine": "^2.5.3"
+  }
+}
