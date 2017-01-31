@@ -5,6 +5,7 @@
 
 import Timer from './lib/Timer';
 import Light from './lib/Light';
+import {parse, format} from './lib/util';
 import {STATUS_RED, STATUS_YELLOW, STATUS_GREEN} from './lib/status';
 
 const STATUS_STR_MAP = {
@@ -14,7 +15,7 @@ const STATUS_STR_MAP = {
 };
 
 let time = process.argv[2] || '0';
-time = parseInt(time, 10);
+time = parse(time);
 
 let timer = new Timer(30 * 60, time);
 let northLight = new Light(timer, STATUS_GREEN, 'North');
@@ -23,7 +24,7 @@ let westLight = new Light(timer, STATUS_RED, 'West');
 let eastLight = new Light(timer, STATUS_RED, 'East');
 
 function changeHandler(e) {
-    console.log(`[${e.time}] ${this.name} is ${STATUS_STR_MAP[e.status]}`);
+    console.log(`[${format(e.time)}] ${this.name} is ${STATUS_STR_MAP[e.status]}`);
 }
 
 northLight.on('change', changeHandler);
